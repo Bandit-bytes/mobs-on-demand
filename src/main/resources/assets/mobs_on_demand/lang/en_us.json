@@ -1,24 +1,17 @@
 {
-  "item.mobs_on_demand.chicken_attractor": "Chicken Attractor",
-  "item.mobs_on_demand.cow_attractor": "Cow Attractor",
-  "item.mobs_on_demand.sheep_attractor": "Sheep Attractor",
-  "item.mobs_on_demand.pig_attractor": "Pig Attractor",
-  "item.mobs_on_demand.villager_attractor": "Villager Attractor",
   "itemGroup.mobs_on_demand.main": "Mob's On Demand",
-
-  "item.mobs_on_demand.chicken_attractor.tooltip1": "Attracts chickens from afar.",
-  "item.mobs_on_demand.chicken_attractor.tooltip2": "Right-click to call nearby chickens.",
-
-  "item.mobs_on_demand.cow_attractor.tooltip1": "Draws cows to your location.",
-  "item.mobs_on_demand.cow_attractor.tooltip2": "Right-click to summon nearby cows.",
-
-  "item.mobs_on_demand.sheep_attractor.tooltip1": "Entices sheep to follow you.",
-  "item.mobs_on_demand.sheep_attractor.tooltip2": "Right-click to gather nearby sheep.",
-
-  "item.mobs_on_demand.pig_attractor.tooltip1": "Brings pigs closer to you.",
-  "item.mobs_on_demand.pig_attractor.tooltip2": "Right-click to attract nearby pigs.",
-
-  "item.mobs_on_demand.villager_attractor.tooltip1": "Summons villagers like a town crier.",
-  "item.mobs_on_demand.villager_attractor.tooltip2": "Right-click to gather nearby villagers."
-
+  "item.mobs_on_demand.mob_crate": "Mob Crate",
+  "item.mobs_on_demand.mob_crate.filled": "Mob Crate (%s)",
+  "tooltip.mobs_on_demand.mob_crate.empty": "Right-click a passive mob to pack it up.",
+  "tooltip.mobs_on_demand.mob_crate.contains": "Contains: %s",
+  "tooltip.mobs_on_demand.mob_crate.release": "Right-click a block to release.",
+  "message.mobs_on_demand.captured": "Packed up %s",
+  "message.mobs_on_demand.not_capturable": "That mob won't fit in a crate",
+  "message.mobs_on_demand.not_owner": "That mob belongs to someone else",
+  "message.mobs_on_demand.no_babies": "Babies can't be crated on this server",
+  "message.mobs_on_demand.busy": "That mob is busy right now",
+  "message.mobs_on_demand.claimed": "That mob is inside a protected claim",
+  "message.mobs_on_demand.claimed_release": "You can't release mobs in this claim",
+  "message.mobs_on_demand.no_room": "Not enough room to release it here",
+  "message.mobs_on_demand.release_failed": "This crate's mob can't exist here"
 }

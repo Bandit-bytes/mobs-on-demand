@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ILI",
+    "P P",
+    "PPP"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "L": "minecraft:lead",
+    "P": "#minecraft:planks"
+  },
+  "result": {
+    "id": "mobs_on_demand:mob_crate",
+    "count": 1
+  }
+}

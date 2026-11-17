@@ -5,7 +5,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 
 /**
- * Decides whether a player may pull a given mob, respecting land-claim mods when present.
+ * Decides whether a player may capture or release a mob at a location, respecting land-claim mods when present.
  * Integrations are referenced only through their own classes so they're never loaded when the mod is absent.
  */
 public final class ClaimProtection {
@@ -14,9 +14,9 @@ public final class ClaimProtection {
     private ClaimProtection() {
     }
 
-    public static boolean canAttract(ServerPlayer player, Entity target) {
+    public static boolean canInteract(ServerPlayer player, Entity target) {
         if (FTB_CHUNKS_LOADED) {
-            return FtbChunksCompat.canAttract(player, target);
+            return FtbChunksCompat.canInteract(player, target);
         }
         return true;
     }

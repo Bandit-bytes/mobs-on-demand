@@ -1,6 +1,9 @@
 package net.bandit.mobs_on_demand;
 
+import net.bandit.mobs_on_demand.config.ModConfig;
+import net.bandit.mobs_on_demand.crate.MobCrateItem;
 import net.bandit.mobs_on_demand.item.ModItems;
+import net.bandit.mobs_on_demand.registry.ModComponents;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
@@ -16,7 +19,10 @@ public class MobsOnDemandMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ModConfig.load();
+        ModComponents.init();
         ModItems.init();
+        MobCrateItem.registerEvents();
         LOGGER.info("Mob's On Demand initialized");
     }
 }

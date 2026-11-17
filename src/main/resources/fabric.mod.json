@@ -3,7 +3,7 @@
   "id": "mobs_on_demand",
   "version": "${version}",
   "name": "Mob's On Demand",
-  "description": "Useful items to attract friendly mobs.",
+  "description": "Pack up, move and order passive mobs.",
   "authors": ["Bandit-Bytes"],
   "contact": {},
   "license": "All-Rights-Reserved",
