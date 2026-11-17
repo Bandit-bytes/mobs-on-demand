@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " L ",
+    "LWL",
+    " L "
+  ],
+  "key": {
+    "L": "minecraft:leather",
+    "W": "minecraft:wheat"
+  },
+  "result": {
+    "id": "mobs_on_demand:cow_attractor",
+    "count": 1
+  }
+}

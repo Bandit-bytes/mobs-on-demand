@@ -1,20 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "pattern": [
     " W ",
     "WFW",
     " W "
   ],
   "key": {
-    "W": {
-      "tag": "minecraft:wool"
-    },
-    "F": {
-      "item": "minecraft:wheat"
-    }
+    "W": "#minecraft:wool",
+    "F": "minecraft:wheat"
   },
   "result": {
-    "item": "mobs_on_demand:sheep_attractor",
+    "id": "mobs_on_demand:sheep_attractor",
     "count": 1
   }
 }

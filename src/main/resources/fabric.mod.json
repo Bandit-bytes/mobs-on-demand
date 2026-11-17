@@ -2,32 +2,27 @@
   "schemaVersion": 1,
   "id": "mobs_on_demand",
   "version": "${version}",
-  "name": "Mob's On Demand'",
-  "description": "Useful items to attract friendly Mobs.",
+  "name": "Mob's On Demand",
+  "description": "Useful items to attract friendly mobs.",
   "authors": ["Bandit-Bytes"],
   "contact": {},
   "license": "All-Rights-Reserved",
   "environment": "*",
   "entrypoints": {
-    "client": [
-      "net.bandit.mobs_on_demand.client.Mobs_on_demandClient"
-    ],
     "main": [
       "net.bandit.mobs_on_demand.MobsOnDemandMod"
+    ],
+    "client": [
+      "net.bandit.mobs_on_demand.client.MobsOnDemandClient"
     ]
   },
-  "mixins": [
-    "mobs_on_demand.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
-    "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "~${minecraft_version}",
+    "java": ">=25",
+    "fabric-api": "*"
   },
   "suggests": {
-    "ftbchunks": "*",
-    "ftblibrary": "*",
-    "architectury": "*",
-    "ftbteams": "*"
+    "ftbchunks": "*"
   }
 }

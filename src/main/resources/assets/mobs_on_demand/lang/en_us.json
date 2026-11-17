@@ -4,7 +4,7 @@
   "item.mobs_on_demand.sheep_attractor": "Sheep Attractor",
   "item.mobs_on_demand.pig_attractor": "Pig Attractor",
   "item.mobs_on_demand.villager_attractor": "Villager Attractor",
-  "itemgroup.mob_attractor": "Mob's On Demand",
+  "itemGroup.mobs_on_demand.main": "Mob's On Demand",
 
   "item.mobs_on_demand.chicken_attractor.tooltip1": "Attracts chickens from afar.",
   "item.mobs_on_demand.chicken_attractor.tooltip2": "Right-click to call nearby chickens.",

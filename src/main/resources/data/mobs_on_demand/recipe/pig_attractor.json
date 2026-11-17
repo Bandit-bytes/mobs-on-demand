@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " C ",
+    "CPC",
+    " C "
+  ],
+  "key": {
+    "C": "minecraft:carrot",
+    "P": "minecraft:porkchop"
+  },
+  "result": {
+    "id": "mobs_on_demand:pig_attractor",
+    "count": 1
+  }
+}

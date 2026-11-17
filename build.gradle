@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
     id 'maven-publish'
 }
 
@@ -11,59 +11,68 @@ base {
 }
 
 repositories {
-    // Maven repository for CurseForge dependencies
     maven {
-        url "https://www.cursemaven.com"
+        name = 'FTB'
+        url = 'https://maven.ftb.dev/releases'
+        content { includeGroup 'dev.ftb.mods' }
     }
-    // Add other necessary repositories here
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "mobs_on_demand" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
 }
 
 dependencies {
-    // Minecraft and Fabric dependencies
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-    // FTB dependency
-    modImplementation "curse.maven:ftb-chunks-fabric-472657:5378089"
-    modImplementation "curse.maven:ftb-library-fabric-438495:5567590"
-    modImplementation "curse.maven:architectury-api-419699:5137936"
-    modImplementation "curse.maven:ftb-teams-fabric-438497:5267188"
+    // FTB Chunks claim protection is optional at runtime, so these are compile-only.
+    compileOnly("dev.ftb.mods:ftb-chunks-fabric:${project.ftb_chunks_version}") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-teams-fabric:${project.ftb_teams_version}") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-library-fabric:${project.ftb_library_version}") { transitive = false }
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "minecraft_version", project.minecraft_version
-    inputs.property "loader_version", project.loader_version
-    filteringCharset "UTF-8"
+    def version = project.version
+    def minecraftVersion = project.minecraft_version
+    def loaderVersion = project.loader_version
+    inputs.property "version", version
+    inputs.property "minecraft_version", minecraftVersion
+    inputs.property "loader_version", loaderVersion
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version,
-                "minecraft_version": project.minecraft_version,
-                "loader_version": project.loader_version
+        expand "version": version,
+                "minecraft_version": minecraftVersion,
+                "loader_version": loaderVersion
     }
 }
 
-def targetJavaVersion = 17
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        it.options.release.set(targetJavaVersion)
-    }
+    it.options.release = 25
 }
 
 java {
-    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    if (JavaVersion.current() < javaVersion) {
-        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
     }
     withSourcesJar()
 }
 
 jar {
-    from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}" }
+    def projectName = project.name
+    inputs.property "projectName", projectName
+
+    from("LICENSE.txt") {
+        rename { "LICENSE_${projectName}.txt" }
     }
 }
 
@@ -73,9 +82,5 @@ publishing {
             artifactId = project.archives_base_name
             from components.java
         }
-    }
-
-    repositories {
-        // Add repositories for publishing artifacts here
     }
 }
