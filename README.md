@@ -8,6 +8,9 @@
 [![Fabric](https://img.shields.io/badge/Loader-Fabric-DBD0B4?style=for-the-badge)](https://fabricmc.net)
 [![Java 25](https://img.shields.io/badge/Java-25-E76F00?style=for-the-badge)](https://adoptium.net)
 [![License: ARR](https://img.shields.io/badge/License-All%20Rights%20Reserved-B22222?style=for-the-badge)](LICENSE.txt)
+[![CurseForge downloads](https://img.shields.io/curseforge/dt/1076433?style=for-the-badge&logo=curseforge&logoColor=white&label=CurseForge&color=F16436)](https://www.curseforge.com/minecraft/mc-mods/mobs-on-demand)
+
+**[Download on CurseForge](https://www.curseforge.com/minecraft/mc-mods/mobs-on-demand)**
 
 ![A Ranch Order Board with Mob Crates and a fenced pen of animals](docs/images/ranch.png)
 
