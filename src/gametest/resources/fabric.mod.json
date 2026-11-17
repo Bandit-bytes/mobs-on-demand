@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mobs_on_demand_screenshots",
+  "version": "1.0.0",
+  "name": "Mob's On Demand README screenshots",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-client-gametest": [
+      "net.bandit.mobs_on_demand.screenshots.ReadmeScreenshots"
+    ]
+  },
+  "depends": {
+    "mobs_on_demand": "*",
+    "fabric-client-gametest-api-v1": "*"
+  }
+}

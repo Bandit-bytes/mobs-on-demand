@@ -7,7 +7,11 @@
   "authors": [
     "Bandit-Bytes"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://github.com/Bandit-bytes/Mob-Attractor",
+    "sources": "https://github.com/Bandit-bytes/Mob-Attractor",
+    "issues": "https://github.com/Bandit-bytes/Mob-Attractor/issues"
+  },
   "license": "All-Rights-Reserved",
   "environment": "*",
   "entrypoints": {

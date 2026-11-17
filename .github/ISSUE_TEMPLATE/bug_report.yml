@@ -1,0 +1,46 @@
+name: Bug report
+description: Something in Mob's On Demand isn't working
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting! Please fill in as much as you can.
+  - type: input
+    id: mod-version
+    attributes:
+      label: Mod version
+      placeholder: "4.0.0+26.3"
+    validations:
+      required: true
+  - type: input
+    id: mc-version
+    attributes:
+      label: Minecraft / Fabric Loader / Fabric API versions
+      placeholder: "26.3 / 0.20.1 / 0.166.2+26.3"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Place a Ranch Order Board
+        2. Order a cow
+        3. ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste a link to your latest.log or crash report (mclo.gs or a gist).
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other mods / data packs
+      description: Anything that might interact (claims, village or mob mods, shop data packs).

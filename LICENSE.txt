@@ -1,2 +1,21 @@
-Copyright (c) 2024 
-All rights reserved.
+Mob's On Demand
+Copyright (c) 2024-2026 Bandit-Bytes. All Rights Reserved.
+
+This software, including its source code, compiled binaries, textures, models,
+structures, data files and documentation (the "Software"), is the exclusive
+property of the copyright holder.
+
+No license or other right is granted to copy, modify, merge, publish,
+distribute, sublicense, sell or otherwise use the Software or any part of it,
+in source or binary form, except with the prior written permission of the
+copyright holder.
+
+Third-party assets included in the Software remain the property of their
+respective owners and are subject to their own terms.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -29,6 +29,17 @@ loom {
     }
 }
 
+fabricApi {
+    // Client game test used to render the README screenshots: ./gradlew runClientGameTest
+    configureTests {
+        createSourceSet = true
+        modId = "mobs_on_demand_screenshots"
+        enableGameTests = false
+        enableClientGameTests = true
+        eula = false
+    }
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
@@ -83,4 +94,9 @@ publishing {
             from components.java
         }
     }
+}
+
+// README screenshots are written straight into docs/images by the client game test.
+tasks.named("runClientGameTest") {
+    jvmArgs("-Dmobs_on_demand.screenshotDir=" + file("docs/images").absolutePath)
 }
