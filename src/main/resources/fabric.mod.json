@@ -8,9 +8,9 @@
     "Bandit-Bytes"
   ],
   "contact": {
-    "homepage": "https://github.com/Bandit-bytes/Mob-Attractor",
-    "sources": "https://github.com/Bandit-bytes/Mob-Attractor",
-    "issues": "https://github.com/Bandit-bytes/Mob-Attractor/issues"
+    "homepage": "https://github.com/Bandit-bytes/mobs-on-demand",
+    "sources": "https://github.com/Bandit-bytes/mobs-on-demand",
+    "issues": "https://github.com/Bandit-bytes/mobs-on-demand/issues"
   },
   "license": "All-Rights-Reserved",
   "environment": "*",
