@@ -1,6 +1,6 @@
 <div align="center">
 
-# Mob's On Demand
+<img src="docs/images/logo.png" alt="Mob's On Demand" width="420">
 
 **Pack up, move and order passive mobs, delivered in crates.**
 
