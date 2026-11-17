@@ -97,6 +97,8 @@ publishing {
 }
 
 // README screenshots are written straight into docs/images by the client game test.
+// Render only some scenes with e.g. ./gradlew runClientGameTest -Pscenes=icon
 tasks.named("runClientGameTest") {
-    jvmArgs("-Dmobs_on_demand.screenshotDir=" + file("docs/images").absolutePath)
+    jvmArgs("-Dmobs_on_demand.screenshotDir=" + file("docs/images").absolutePath,
+            "-Dmobs_on_demand.screenshotScenes=" + (project.findProperty("scenes") ?: "all"))
 }

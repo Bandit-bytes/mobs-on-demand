@@ -38,6 +38,12 @@ public class ReadmeScreenshots implements FabricClientGameTest {
     private static final Path OUT = Path.of(System.getProperty("mobs_on_demand.screenshotDir", "screenshots"));
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 900;
+    /** Comma-separated scenes to render ("ranch,order_board,crate_inspect,village,icon"), or "all". */
+    private static final String SCENES = System.getProperty("mobs_on_demand.screenshotScenes", "all");
+
+    private static boolean wanted(String scene) {
+        return SCENES.equals("all") || java.util.Arrays.asList(SCENES.split(",")).contains(scene);
+    }
 
     @Override
     public void runTest(ClientGameTestContext context) {
@@ -55,10 +61,21 @@ public class ReadmeScreenshots implements FabricClientGameTest {
                     server.overworld().getHeight(Heightmap.Types.MOTION_BLOCKING, 0, 0));
             BlockPos origin = new BlockPos(0, ground, 0);
 
-            ranchScene(context, world, origin);
-            orderScreen(context, world, origin);
-            crateInspect(context, world, origin.offset(40, 0, 0));
-            villageScene(context, world, ground);
+            if (wanted("ranch") || wanted("order_board")) {
+                ranchScene(context, world, origin, wanted("ranch"));
+            }
+            if (wanted("order_board")) {
+                orderScreen(context, world, origin);
+            }
+            if (wanted("crate_inspect")) {
+                crateInspect(context, world, origin.offset(40, 0, 0));
+            }
+            if (wanted("village")) {
+                villageScene(context, world, ground);
+            }
+            if (wanted("icon")) {
+                iconShot(context, world, origin.offset(-40, 0, 0));
+            }
         }
     }
 
@@ -123,7 +140,7 @@ public class ReadmeScreenshots implements FabricClientGameTest {
         return MobCrates.createFilled(mob);
     }
 
-    private static void ranchScene(ClientGameTestContext context, TestSingleplayerContext world, BlockPos o) {
+    private static void ranchScene(ClientGameTestContext context, TestSingleplayerContext world, BlockPos o, boolean photograph) {
         int x = o.getX(), y = o.getY(), z = o.getZ();
         cmd(world, "fill " + (x - 12) + " " + y + " " + (z - 10) + " " + (x + 12) + " " + (y + 8) + " " + (z + 14) + " air");
         cmd(world, "fill " + (x - 12) + " " + (y - 1) + " " + (z - 10) + " " + (x + 12) + " " + (y - 1) + " " + (z + 14) + " grass_block");
@@ -164,8 +181,10 @@ public class ReadmeScreenshots implements FabricClientGameTest {
         gameMode(world, GameType.SPECTATOR);
         cmd(world, "tp @a " + (x + 1.0) + " " + (y + 2.6) + " " + (z + 7.5) + " facing " + (x + 1) + " " + (y - 0.6) + " " + (z - 1));
         world.getConnection().waitForChunksRender();
-        hideHud(context, true);
-        shot(context, "ranch");
+        if (photograph) {
+            hideHud(context, true);
+            shot(context, "ranch");
+        }
     }
 
     private static void orderScreen(ClientGameTestContext context, TestSingleplayerContext world, BlockPos sign) {
@@ -242,6 +261,29 @@ public class ReadmeScreenshots implements FabricClientGameTest {
         System.err.println("[readme screenshots] crate inspect target: " + target);
         shot(context, "crate_inspect");
         context.getInput().releaseKey(options -> options.keyShift);
+    }
+
+    /**
+     * Mod icon: a full crate high in the sky (so the background is plain sky), three-quarter view, narrow FOV.
+     * Written as icon.png at 1024x1024.
+     */
+    private static void iconShot(ClientGameTestContext context, TestSingleplayerContext world, BlockPos base) {
+        BlockPos crate = new BlockPos(base.getX(), 250, base.getZ());
+        gameMode(world, GameType.SPECTATOR);
+        cmd(world, "tp @a " + (crate.getX() + 0.5) + " " + (crate.getY() + 5) + " " + (crate.getZ() + 0.5));
+        world.getConnection().waitForChunksRender();
+        world.getServer().runOnServer(server -> placeCrate(server.overworld(), crate, Direction.SOUTH,
+                crateOf(server.overworld(), EntityTypes.COW, null)));
+        context.getInput().resizeWindow(1024, 1024);
+        context.runOnClient(client -> client.options.fov().set(30));
+        double cx = crate.getX() + 0.5, cy = crate.getY() + 0.5, cz = crate.getZ() + 0.5;
+        // Spectator eye sits ~1.62 above the teleport position.
+        cmd(world, "tp @a " + (cx + 2.15) + " " + (cy + 1.3 - 1.62) + " " + (cz + 2.15) + " facing " + cx + " " + (cy - 0.05 - 1.62) + " " + cz);
+        world.getConnection().waitForChunksRender();
+        hideHud(context, true);
+        shot(context, "icon");
+        context.runOnClient(client -> client.options.fov().set(70));
+        context.getInput().resizeWindow(WIDTH, HEIGHT);
     }
 
     /** Places plains villages until one generates with an order sign, then photographs the sign from the street. */
