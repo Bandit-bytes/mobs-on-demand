@@ -1,0 +1,16 @@
+{
+  "sort": 90,
+  "enabled": true,
+  "entity": "minecraft:donkey",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 6
+    },
+    {
+      "ingredient": "minecraft:hay_block",
+      "count": 2
+    }
+  ],
+  "delivery_seconds": 150
+}

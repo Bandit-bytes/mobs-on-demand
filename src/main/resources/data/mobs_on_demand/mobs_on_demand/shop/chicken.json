@@ -1,0 +1,16 @@
+{
+  "sort": 10,
+  "enabled": true,
+  "entity": "minecraft:chicken",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 1
+    },
+    {
+      "ingredient": "minecraft:wheat_seeds",
+      "count": 8
+    }
+  ],
+  "delivery_seconds": 30
+}

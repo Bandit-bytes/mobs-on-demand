@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,filled=false": {
+      "model": "mobs_on_demand:block/mob_crate"
+    },
+    "facing=north,filled=true": {
+      "model": "mobs_on_demand:block/mob_crate_filled"
+    },
+    "facing=east,filled=false": {
+      "model": "mobs_on_demand:block/mob_crate",
+      "y": 90
+    },
+    "facing=east,filled=true": {
+      "model": "mobs_on_demand:block/mob_crate_filled",
+      "y": 90
+    },
+    "facing=south,filled=false": {
+      "model": "mobs_on_demand:block/mob_crate",
+      "y": 180
+    },
+    "facing=south,filled=true": {
+      "model": "mobs_on_demand:block/mob_crate_filled",
+      "y": 180
+    },
+    "facing=west,filled=false": {
+      "model": "mobs_on_demand:block/mob_crate",
+      "y": 270
+    },
+    "facing=west,filled=true": {
+      "model": "mobs_on_demand:block/mob_crate_filled",
+      "y": 270
+    }
+  }
+}

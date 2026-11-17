@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PEP",
+    "PBP",
+    "PPP"
+  ],
+  "key": {
+    "P": "#minecraft:planks",
+    "E": "minecraft:emerald",
+    "B": "minecraft:book"
+  },
+  "result": {
+    "id": "mobs_on_demand:order_board",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "sort": 30,
+  "enabled": true,
+  "entity": "minecraft:pig",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 3
+    },
+    {
+      "ingredient": "minecraft:carrot",
+      "count": 8
+    }
+  ],
+  "delivery_seconds": 60
+}

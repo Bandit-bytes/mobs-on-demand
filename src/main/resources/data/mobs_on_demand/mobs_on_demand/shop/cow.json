@@ -1,0 +1,16 @@
+{
+  "sort": 50,
+  "enabled": true,
+  "entity": "minecraft:cow",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 4
+    },
+    {
+      "ingredient": "minecraft:wheat",
+      "count": 12
+    }
+  ],
+  "delivery_seconds": 90
+}

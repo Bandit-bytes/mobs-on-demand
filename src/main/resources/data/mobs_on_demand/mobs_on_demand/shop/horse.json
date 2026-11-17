@@ -1,0 +1,16 @@
+{
+  "sort": 100,
+  "enabled": true,
+  "entity": "minecraft:horse",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 8
+    },
+    {
+      "ingredient": "minecraft:golden_carrot",
+      "count": 2
+    }
+  ],
+  "delivery_seconds": 180
+}

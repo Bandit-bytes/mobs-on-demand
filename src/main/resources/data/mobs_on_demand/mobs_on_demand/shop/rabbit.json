@@ -1,0 +1,16 @@
+{
+  "sort": 20,
+  "enabled": true,
+  "entity": "minecraft:rabbit",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 2
+    },
+    {
+      "ingredient": "minecraft:carrot",
+      "count": 4
+    }
+  ],
+  "delivery_seconds": 45
+}

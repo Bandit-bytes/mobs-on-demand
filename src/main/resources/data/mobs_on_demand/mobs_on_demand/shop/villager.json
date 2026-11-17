@@ -1,0 +1,16 @@
+{
+  "sort": 110,
+  "enabled": true,
+  "entity": "minecraft:villager",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 12
+    },
+    {
+      "ingredient": "minecraft:bread",
+      "count": 8
+    }
+  ],
+  "delivery_seconds": 300
+}

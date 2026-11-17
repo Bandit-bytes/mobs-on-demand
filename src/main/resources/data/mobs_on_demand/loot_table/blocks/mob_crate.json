@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:copy_components",
+            "source": "block_entity",
+            "include": [
+              "minecraft:custom_name",
+              "minecraft:entity_data",
+              "minecraft:max_stack_size",
+              "mobs_on_demand:crate_label"
+            ]
+          },
+          "name": "mobs_on_demand:mob_crate"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "mobs_on_demand:blocks/mob_crate"
+}

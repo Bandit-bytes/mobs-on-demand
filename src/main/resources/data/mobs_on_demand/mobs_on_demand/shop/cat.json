@@ -1,0 +1,16 @@
+{
+  "sort": 70,
+  "enabled": true,
+  "entity": "minecraft:cat",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 4
+    },
+    {
+      "ingredient": "minecraft:cod",
+      "count": 4
+    }
+  ],
+  "delivery_seconds": 60
+}

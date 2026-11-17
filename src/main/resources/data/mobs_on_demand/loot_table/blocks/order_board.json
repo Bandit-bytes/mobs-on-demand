@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "mobs_on_demand:order_board",
+            "state": {
+              "part": "lower_left"
+            }
+          },
+          "name": "mobs_on_demand:order_board"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "mobs_on_demand:blocks/order_board"
+}

@@ -4,7 +4,9 @@
   "version": "${version}",
   "name": "Mob's On Demand",
   "description": "Pack up, move and order passive mobs.",
-  "authors": ["Bandit-Bytes"],
+  "authors": [
+    "Bandit-Bytes"
+  ],
   "contact": {},
   "license": "All-Rights-Reserved",
   "environment": "*",
@@ -16,6 +18,9 @@
       "net.bandit.mobs_on_demand.client.MobsOnDemandClient"
     ]
   },
+  "mixins": [
+    "mobs_on_demand.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "minecraft": "~${minecraft_version}",

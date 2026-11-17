@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "net.bandit.mobs_on_demand.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "JigsawPlacerMixin",
+    "StructureTemplatePoolAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

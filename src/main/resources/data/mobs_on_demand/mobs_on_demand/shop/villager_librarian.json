@@ -1,0 +1,26 @@
+{
+  "sort": 130,
+  "enabled": true,
+  "entity": "minecraft:villager",
+  "name": {
+    "translate": "entity.minecraft.villager.librarian"
+  },
+  "icon": "minecraft:lectern",
+  "entity_data": {
+    "VillagerData": {
+      "profession": "minecraft:librarian"
+    },
+    "Xp": 1
+  },
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 24
+    },
+    {
+      "ingredient": "minecraft:book",
+      "count": 4
+    }
+  ],
+  "delivery_seconds": 600
+}

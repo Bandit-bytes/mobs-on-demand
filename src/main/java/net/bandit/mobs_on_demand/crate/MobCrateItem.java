@@ -1,6 +1,5 @@
 package net.bandit.mobs_on_demand.crate;
 
-import net.bandit.mobs_on_demand.MobsOnDemandMod;
 import net.bandit.mobs_on_demand.compat.ClaimProtection;
 import net.bandit.mobs_on_demand.config.ModConfig;
 import net.bandit.mobs_on_demand.registry.ModComponents;
@@ -9,14 +8,12 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Prediction;
-import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -28,14 +25,14 @@ import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.npc.villager.AbstractVillager;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.TagValueOutput;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Consumer;
 
@@ -43,12 +40,13 @@ import java.util.function.Consumer;
  * Packs a passive mob into the item and releases it later, keeping all of its data
  * (name, variant, age, villager profession and trades, ...).
  * <p>
- * Empty crate: right-click a mob in {@link ModTags#CAPTURABLE}. Filled crate: right-click a block.
+ * Empty crate: right-click a mob in {@link ModTags#CAPTURABLE} to capture it, or a block to place the crate.
+ * Filled crate: right-click a block to release the mob, or sneak-right-click to place the crate with the mob inside.
  */
-public class MobCrateItem extends Item {
+public class MobCrateItem extends BlockItem {
 
-    public MobCrateItem(Properties properties) {
-        super(properties);
+    public MobCrateItem(Block block, Properties properties) {
+        super(block, properties);
     }
 
     public static boolean isFilled(ItemStack stack) {
@@ -56,7 +54,7 @@ public class MobCrateItem extends Item {
     }
 
     /**
-     * Capture runs in {@link UseEntityCallback} rather than {@link Item#interactLivingEntity} because the latter only
+     * Capture runs in {@link UseEntityCallback} rather than {@code Item#interactLivingEntity} because the latter only
      * fires after the mob's own interaction, so villagers would open trading instead of being crated.
      */
     public static void registerEvents() {
@@ -82,17 +80,7 @@ public class MobCrateItem extends Item {
 
         prepareForCrating(mob);
         Component label = mob.getName();
-        CompoundTag data;
-        try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(mob.problemPath(), MobsOnDemandMod.LOGGER)) {
-            TagValueOutput output = TagValueOutput.createWithContext(reporter, mob.registryAccess());
-            mob.saveWithoutId(output);
-            data = output.buildResult();
-        }
-
-        ItemStack filled = stack.copyWithCount(1);
-        filled.set(DataComponents.ENTITY_DATA, TypedEntityData.of(mob.getType(), data));
-        filled.set(ModComponents.CRATE_LABEL, label);
-        filled.set(DataComponents.MAX_STACK_SIZE, 1);
+        ItemStack filled = MobCrates.createFilled(mob);
 
         stack.consume(1, player);
         if (stack.isEmpty()) {
@@ -148,8 +136,8 @@ public class MobCrateItem extends Item {
     public InteractionResult useOn(UseOnContext context) {
         ItemStack stack = context.getItemInHand();
         TypedEntityData<EntityType<?>> contents = stack.get(DataComponents.ENTITY_DATA);
-        if (contents == null) {
-            return InteractionResult.PASS;
+        if (contents == null || context.getPlayer() == null || context.getPlayer().isSecondaryUseActive()) {
+            return super.useOn(context); // place the crate as a block
         }
         Level level = context.getLevel();
         if (!(level instanceof ServerLevel serverLevel) || !(context.getPlayer() instanceof ServerPlayer player)) {

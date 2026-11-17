@@ -1,0 +1,16 @@
+{
+  "sort": 80,
+  "enabled": true,
+  "entity": "minecraft:wolf",
+  "cost": [
+    {
+      "ingredient": "minecraft:emerald",
+      "count": 6
+    },
+    {
+      "ingredient": "minecraft:bone",
+      "count": 4
+    }
+  ],
+  "delivery_seconds": 90
+}
